@@ -1,0 +1,9 @@
+body {
+    background-color: rgb(36, 36, 36);
+    color: white;
+}
+
+.menu {
+    background-color: whitesmoke;
+    width: fit-content;
+}

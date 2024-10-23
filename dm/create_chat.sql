@@ -29,6 +29,20 @@ CREATE TABLE IF NOT EXISTS `chat`.`users` (
   `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`));
 
+-- -----------------------------------------------------
+-- Table `chat`.`session`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `chat`.`session` (
+  `users_id` INT NOT NULL,
+  `user_token` VARCHAR(16) NOT NULL,
+  `token_expire` DATETIME NOT NULL,
+  INDEX `fk_rooms_users1_idx` (`users_id` ASC) VISIBLE,
+  CONSTRAINT `fk_rooms_users1`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `chat`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  PRIMARY KEY (`users_id`));
 
 -- -----------------------------------------------------
 -- Table `chat`.`rooms`
